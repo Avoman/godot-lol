@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=4 uid="uid://rn4c4m10v8ky"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_sl4pn"]
+[ext_resource type="Texture2D" uid="uid://7a2in1yuyndp" path="res://icon.svg" id="2_nb64r"]
+[ext_resource type="Texture2D" uid="uid://brvgjhje16i8w" path="res://stone-wall-from-bricks-rock-game-background-in-cartoon-style-seamless-textured-surface-ui-game-asset-road-or-floor-material-illustration-vector.jpg" id="3_is0wj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qewl"]
+size = Vector2(239.5, 262)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a70by"]
+texture = ExtResource("3_is0wj")
+texture_region_size = Vector2i(490, 490)
+1:2/0 = 0
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-245, -245, 245, -245, 245, 245, -245, 245)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-245, -245, 245, -245, 245, 245, -245, 245)
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-245, -245, 245, -245, 245, 245, -245, 245)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-245, -245, 245, -245, 245, 245, -245, 245)
+2:2/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mjuev"]
+tile_size = Vector2i(490, 490)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_a70by")
+
+[node name="Level" type="Node2D"]
+position = Vector2(1076, 362)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-492, 0)
+script = ExtResource("1_sl4pn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(1.875, 2.03906)
+texture = ExtResource("2_nb64r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_3qewl")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.3, 0.3)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-391.975, 0)
+tile_map_data = PackedByteArray("AADk/yoAAAABAAAAAAACACoAAAABAAAAAAAgACoAAAABAAAAAAA9ACoAAAABAAAAAABcACoAAAABAAAAAAB5ACgAAAABAAAAAAB6ACgAAAABAAAAAACXACcAAAABAAAAAACzACgAAAABAAAAAADMACMAAAABAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAD8/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_mjuev")
